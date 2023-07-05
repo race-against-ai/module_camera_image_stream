@@ -9,15 +9,15 @@ def read(fname):
 
 
 setup(
-    name="raai_module_template",
+    name="raai_module_camera_image_stream",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     author="NGITl",
-    author_email="your@email.de",
-    description=("RAAI Module Template for managing different projects for RAAI"),
+    author_email="666arnehilbig@gmail.com",
+    description=("RAAI Module Camera Image Stream for recieving the camera images from the Raspberry Pi."),
     license="GPL 3.0",
-    keywords="template",
-    url="https://github.com/vw-wob-it-edu-ngitl/raai_module_template",
+    keywords="camera image stream",
+    url="https://github.com/vw-wob-it-edu-ngitl/raai_module_camera_image_stream",
     packages=find_packages(),
     long_description=read("README.md"),
     install_requires=["pynng~=0.7.2"],
