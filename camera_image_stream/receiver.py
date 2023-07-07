@@ -6,7 +6,7 @@ import cv2
 
 # Constants
 RASPBERRY_IP = "192.168.1.100"
-RASPBERRY_PORT = 8000
+RASPBERRY_PORT = "8000"
 
 PUB_ADDRESS = "ipc:///tmp/RAAI/camera_frame.ipc"
 
