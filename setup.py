@@ -20,5 +20,5 @@ setup(
     url="https://github.com/vw-wob-it-edu-ngitl/raai_module_camera_image_stream",
     packages=find_packages(),
     long_description=read("README.md"),
-    install_requires=["pynng~=0.7.2"],
+    install_requires=["pynng~=0.7.2", "numpy~=1.24.2", "opencv-python~=4.7.0.72"],
 )
