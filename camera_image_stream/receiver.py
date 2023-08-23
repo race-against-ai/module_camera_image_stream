@@ -1,33 +1,22 @@
 # Imports
+from pathlib import Path
 from pynng import Pub0
+from json import load
 import numpy as np
 import cv2
 
 
-# Constants
-RASPBERRY_IP = "192.168.1.100"
-RASPBERRY_PORT = "8000"
+def main() -> None:
+    config_path = Path().cwd() / "camera_image_stream_config.json"
+    with open(config_path, "r") as config_file:
+        config = load(config_file)
+        camera_stream = config["pynng"]["publishers"]["camera_image_publisher"]
+        raspberry_pi_config = config["raspberry_pi"]
+        show_preview = config["show_preview"]
 
-PUB_ADDRESS = "ipc:///tmp/RAAI/camera_frame.ipc"
+    video_capture = cv2.VideoCapture(f"udp://{raspberry_pi_config['ip']}:{raspberry_pi_config['port']}", cv2.CAP_FFMPEG)
+    pub_sender = Pub0(listen=camera_stream["address"])
 
-video_capture = cv2.VideoCapture(f"udp://{RASPBERRY_IP}:{RASPBERRY_PORT}", cv2.CAP_FFMPEG)
-if not video_capture.read()[0]:
-    video_capture = cv2.VideoCapture(f"tcp://{RASPBERRY_IP}:{RASPBERRY_PORT}", cv2.CAP_FFMPEG)
-
-pub_sender = Pub0()
-pub_sender.listen(PUB_ADDRESS)
-
-
-# Main Loop
-def main(show_preview: bool = False):
-    """Receives the frame from the raspberry pi.
-
-    Args:
-        show_preview (bool): If True it will show the received frame from the raspberry pi.
-
-    Raises:
-        ConnectionError: If the connection has been interrupted and the next frame could not be read.
-    """
     while True:
         success, frame = video_capture.read()
 
