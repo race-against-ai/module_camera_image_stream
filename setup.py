@@ -14,7 +14,7 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     author="NGITl",
     author_email="666arnehilbig@gmail.com",
-    description=("RAAI Module Camera Image Stream for recieving the camera images from the Raspberry Pi."),
+    description=("RAAI Module Camera Image Stream for receiving the camera images from the Raspberry Pi."),
     license="GPL 3.0",
     keywords="camera image stream",
     url="https://github.com/vw-wob-it-edu-ngitl/raai_module_camera_image_stream",
