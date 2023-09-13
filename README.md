@@ -8,7 +8,7 @@ To take the pictures from the camera and get them read to transfer "libcamera-vi
 
 ### Sending images to the PC
 
-To send the images to the PC it uses a UDP-Multicast on "239.255.0.1:8000". 
+To send the images to the PC it uses a UDP-Multicast on "239.255.0.1:8000".
 
 (standard setting for module; change in the [config](camera_image_stream_config.json) and on the raspberry pi under `/usr/local/bin/start_camera_stream.sh` replace `239.0.0.1:8000` with the new address)
 
