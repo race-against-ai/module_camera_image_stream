@@ -1,0 +1,2 @@
+include camera_image_stream/schema/*.json
+include camera_image_stream/templates/*.json
