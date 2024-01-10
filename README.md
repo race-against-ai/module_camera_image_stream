@@ -24,6 +24,7 @@ This module receives the camera images from the Raspberry Pi and transmit them u
 Copy the [setup.sh](scripts/setup.sh) to the raspberry pi and run it using:
 
 ```bash
+sudo chmod +x setup.sh
 sudo sh setup.sh
 ```
 
