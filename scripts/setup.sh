@@ -1,20 +1,21 @@
 #!/bin/bash
 
 # Change to root directory
-cd ~
+cd \
 
 
 # Installing Dependencies
 sudo apt-get update
 sudo apt-get install -y isc-dhcp-server
+sudo apt-get install -y isc-dhcp-server nmap
 
 
 # Editing Configurations
 # # /etc/dhcp/dhcpd.conf for isc-dhcp-server
-sudo echo <<EOT > /etc/dhcp/dhcpd.conf
+sudo cat <<EOT > /etc/dhcp/dhcpd.conf
 # Lease
-default-lease-time: 86400; # 1d
-max-lease-time: 604800; # 7d
+default-lease-time 86400; # 1d
+max-lease-time 604800; # 7d
 
 # Main DHCP Server for the network
 authoritative;
@@ -29,14 +30,14 @@ EOT
 
 # Creating bash scripts
 # # start_camera_strean.sh
-sudo echo <<EOT > /usr/local/bin/start_camera_stream.sh
+sudo cat <<EOT > /usr/local/bin/start_camera_stream.sh
 #!/bin/bash
 
 libcamera-vid -t 0 --width 1332 --height 990 --inline -o udp://239.0.0.1:8000
 EOT
 
 # # start_dhcp_server.sh
-sudo echo <<EOT > /usr/local/bin/start_dhcp_server.sh
+sudo cat <<EOT > /usr/local/bin/start_dhcp_server.sh
 #!/bin/bash
 
 result=$(sudo nmap --script broadcast-dhcp-discover -e eth0)
@@ -51,7 +52,7 @@ EOT
 
 # Setting up systemd services
 # # start_camera_stream.service
-sudo echo <<EOT > /etc/systemd/system/start_camera_stream.service
+sudo cat <<EOT > /etc/systemd/system/start_camera_stream.service
 [Unit]
 Description=Start Camera Stream
 
@@ -64,7 +65,7 @@ WantedBy=multi-user.target
 EOT
 
 # # start_dhcp_server.service
-sudo echo <<EOT > /etc/systemd/system/start_dhcp_server.service
+sudo cat <<EOT > /etc/systemd/system/start_dhcp_server.service
 [Unit]
 Description=Start DHCP Server
 
