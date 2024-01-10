@@ -1,0 +1,16 @@
+{
+    "pynng": {
+        "publishers": {
+            "camera_image_publisher": {
+                "address": "ipc:///tmp/RAAI/camera_frame.ipc",
+                "topics": []
+            }
+        },
+        "subscribers": {}
+    },
+    "raspberry_pi": {
+        "ip": "239.255.0.1",
+        "port": "8000"
+    },
+    "show_preview": true
+}
