@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "pynng": {
+            "type": "object",
+            "properties": {
+                "publishers": {
+                    "type": "object",
+                    "properties": {
+                        "camera_image_publisher": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                },
+                                "topics": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "required": ["address", "topics"]
+                        }
+                    },
+                    "required": ["camera_image_publisher"]
+                },
+                "subscribers": {
+                    "type": "object",
+                    "properties": {}
+                }
+            },
+            "required": ["publishers", "subscribers"]
+        },
+        "raspberry_pi": {
+            "type": "object",
+            "properties": {
+                "ip": {"type": "string"},
+                "port": {"type": "string"}
+            }
+        },
+        "show_preview": {"type": "boolean"}
+    },
+    "required": ["pynng", "raspberry_pi", "show_preview"]
+}
